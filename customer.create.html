@@ -1,0 +1,184 @@
+<style>
+    input.ng-dirty.ng-invalid {
+        border: 1px solid red;
+    }
+
+
+    .marginRight5 {
+        margin-right: 5px;
+    }
+
+
+    .marginBottom5 {
+        margin-bottom: 5px;
+    }
+
+
+    .hoverButtonSuccess {
+        color: white;
+    }
+
+</style>
+
+<div class="row">
+    <form role="form" name="f1" novalidate>
+        <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+            <div class="panel panel-default">
+
+                <div class="panel-heading" style="padding:25px">
+                    <strong><span class="glyphicon glyphicon-th"></span> ADD CUSTOMER</strong>
+                
+                </div>
+
+
+
+          
+                <div class="panel-body ng-scope">
+                    <button type="submit" ng-click="create()" class="btn btn-primary pull-right" ng-disabled="f1.MeasurementNo.$dirty && f1.MeasurementNo.$invalid || f1.MeasurementNo.$error.required||
+                                        f1.UserName.$dirty && f1.UserName.$invalid || f1.UserName.$error.required||
+                        f1.Phone.$dirty && f1.Phone.$invalid || f1.Phone.$error.required" disabled>
+                        Save changes
+                    </button>
+                    <br />
+                    <div class="form-group">
+                        <label>Measurement Number<span style="color:red">*</span></label>
+                        <input class="form-control" type="text" ng-model="Customer.MeasurementNo" name="MeasurementNo" id="MeasurementNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Name<span style="color:red">*</span></label>
+                        <input class="form-control" type="text" ng-model="Customer.UserName" name="UserName" id="UserName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number<span style="color:red">*</span></label>
+                        <input class="form-control" type="text" ng-model="Customer.Phone" name="Phone" id="Phone" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input class="form-control" type="email" ng-model="Customer.Email">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input class="form-control" type="text" ng-model="Customer.FirstName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input class="form-control" type="text" ng-model="Customer.LastName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Telephone</label>
+                                <input class="form-control" type="text" ng-model="Customer.ContactNumber">
+                            </div>
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label>Address 1</label>
+                        <textarea class="form-control" ng-model="Customer.Address1" rows="8"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Address 2</label>
+                        <textarea class="form-control" ng-model="Customer.Address2" rows="8"></textarea>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END PANEL -->
+            <!-- END PANEL -->
+            <!-- END PANEL -->
+            <!--<div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Location Photos</div>
+                <div class="panel-body ng-scope">
+                    <div class="form-group">
+                        <label>Existing Photos</label><br />
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="file-box">
+                                    <div ng-repeat="photo in photos" class="file">
+                                        <span class="corner"></span>
+                                        <div class="image">
+                                            <img alt="image" class="img-responsive" ng-src="https://dbamedia.azureedge.net/files/{{photo.Blob}}">
+                                        </div>
+                                        <div class="file-name">
+                                            <a href="javascript:;" ng-click="deletePhoto(photo)" class="pull-right"><i class="fa fa-2x fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <a href="javascript:;" class="btn btn-primary" ng-click="upload()">Upload</a>
+                        <a class="btn btn-primary" href="#!/location/photomanager/{{location.LocationId}}">Advanced Edit</a>
+                    </div>
+                </div>
+            </div>-->
+            <!-- END PANEL -->
+        </div>
+    </form>
+</div>
+
+<!--ng-template SCRIPTS-->
+<!--<script type="text/ng-template" id="photo_upload.html">
+    <div class="inmodal">
+    <div class="modal-header">
+        <i class="fa fa-photo modal-icon"></i>
+        <h4 class="modal-title">{{name}}</h4>
+        <small class="font-bold">Photo Upload</small>
+    </div>
+    <div class="modal-body">
+        <div action="{{path}}" class="dropzone" drop-zone
+                call-back="uploadNotify(response)"
+                data-max="100"
+                message="Photo Uploaded!"
+                acceptedfiles="image/png,image/jpeg"
+                id="file-dropzone">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="done()">Done</button>
+        <button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+    </div>
+</div>
+
+</script>-->
+<!--<script type="text/ng-template" id="photo_publish.html">
+    <div class="inmodal">
+        <div class="modal-header">
+            <i class="fa fa-cloud-upload modal-icon"></i>
+            <h4 class="modal-title">Photo Publisher</h4>
+            <small class="font-bold">Prepare photo for upload</small>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <img alt="image" class="img-responsive" ng-src="https://dbamedia.azureedge.net/files/{{pubPhoto.OGBlob}}"/>
+                </div>
+                <div class="col-sm-4">
+                    <span>Filename</span><br/>
+                    <input type="text" class="form-control" ng-model="pubPhoto.FileName"/><br/>
+                    <span>Category</span><br/>
+                    <select class="form-control" ng-model="pubPhoto.Category"  ng-options="option.value as option.name for option in categories"></select><br/>
+                    <span>Title</span><br/>
+                    <input type="text" class="form-control" ng-model="pubPhoto.Title"/><br/>
+                    <span>Description</span><br/>
+                    <input type="text" class="form-control" ng-model="pubPhoto.Description"/><br/>
+                    <span>Keywords</span><br/>
+                    <textarea rows="4" class="form-control" ng-model="pubPhoto.Comments"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="cancel()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="publish(pubPhoto)">Publish</button>
+        </div>
+    </div>
+
+</script>-->
+<!-- END ng-template SCRIPTS -->
